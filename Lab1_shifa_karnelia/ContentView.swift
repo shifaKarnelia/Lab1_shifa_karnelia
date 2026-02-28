@@ -14,6 +14,9 @@ struct ContentView: View {
         
         //print number
         Text(" \(currentNumber)")
+            .font(.system(size: 64, weight: .semibold, design: .serif))
+            .foregroundColor(.teal)
+
         //prime , not prime labe
         VStack(spacing: 18) {
                            Text("Prime")
