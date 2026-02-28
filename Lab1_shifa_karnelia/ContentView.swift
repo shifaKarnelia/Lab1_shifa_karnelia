@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @State private var currentNumber: Int = Int.random(in: 2...100)
     @State private var feedback: Feedback = .none
+    
+    
     enum Feedback {
             case none
             case correct
@@ -25,8 +27,22 @@ struct ContentView: View {
 
         //prime , not prime labe
         VStack(spacing: 18) {
-                           Text("Prime")
-                            Text("Not Prime")
+                Text("Prime")
+                .font(.system(size: 34))
+                .padding()
+                .contentShape(Rectangle())
+                .onTapGesture {print("prime tapped")
+                }
+                    
+                Text("Not Prime")
+                .font(.system(size: 34))
+                .padding()
+                .contentShape(Rectangle())
+                .onTapGesture {print("not prime tapped")
+                }
+                  
+
+              
                        }
 
         EmptyView().frame(height: 80)
