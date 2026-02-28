@@ -10,6 +10,12 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var currentNumber: Int = Int.random(in: 2...100)
+    @State private var feedback: Feedback = .none
+    enum Feedback {
+            case none
+            case correct
+            case wrong
+        }
     var body: some View {
         
         //print number
@@ -23,7 +29,7 @@ struct ContentView: View {
                             Text("Not Prime")
                        }
 
-            
+        EmptyView().frame(height: 80)
     }
 }
 
