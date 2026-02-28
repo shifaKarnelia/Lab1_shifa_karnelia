@@ -40,6 +40,23 @@ struct ContentView: View {
             .foregroundColor(.red)
             .frame(height: 80)
     }
+    //function that
+    //check if number is prime or not
+    private func isPrime(_ n: Int) -> Bool {
+            if n < 2 { return false }
+            if n == 2 { return true }
+            if n % 2 == 0 { return false }
+
+            let limit = Int(Double(n).squareRoot())
+            if limit < 3 { return true }
+
+            var i = 3
+            while i <= limit {
+                if n % i == 0 { return false }
+                i += 2
+            }
+            return true
+    }
 }
 
 #Preview {
