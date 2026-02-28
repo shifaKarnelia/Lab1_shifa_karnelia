@@ -30,6 +30,15 @@ struct ContentView: View {
                        }
 
         EmptyView().frame(height: 80)
+        Image(systemName: "checkmark.circle.fill")
+            .font(.system(size: 72))
+            .foregroundColor(.green)
+            .frame(height: 80)
+                            
+        Image(systemName: "xmark.circle.fill")
+            .font(.system(size: 72))
+            .foregroundColor(.red)
+            .frame(height: 80)
     }
 }
 
