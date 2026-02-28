@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State private var currentNumber: Int = Int.random(in: 2...100)
     @State private var feedback: Feedback = .none
-    
+    @State private var userAnsweredThisRound: Bool = false
     
     enum Feedback {
             case none
