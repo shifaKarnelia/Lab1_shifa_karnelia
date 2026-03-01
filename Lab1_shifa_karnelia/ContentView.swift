@@ -10,8 +10,14 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var currentNumber: Int = Int.random(in: 2...100)
+    //feedback var
     @State private var feedback: Feedback = .none
     @State private var userAnsweredThisRound: Bool = false
+    
+    // total score count var
+    @State private var totalCorrect: Int = 0
+    @State private var totalWrong: Int = 0
+
     
     enum Feedback {
         case none
