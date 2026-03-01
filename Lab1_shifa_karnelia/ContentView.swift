@@ -84,6 +84,17 @@ struct ContentView: View {
             }
             startNewRound()
         }
+        .alert("Results (Last 10 Attempts)", isPresented: $showSummaryAlert) {
+                   Button("OK") { }
+               } message: {
+                   Text("""
+                        Correct: \(batchCorrect)
+                        Wrong: \(batchWrong)
+
+                        Total Correct: \(totalCorrect)
+                        Total Wrong: \(totalWrong)
+                        """)
+               }
     }
     
     //start new round
@@ -141,7 +152,17 @@ struct ContentView: View {
             totalWrong += 1
             batchWrong += 1
             }
+        if batchAttempts == 10 {
+                   showSummaryAlert = true
+
+                   // Reset batch counters for next 10 attempts
+                   batchAttempts = 0
+                   batchCorrect = 0
+                   batchWrong = 0
+               }
+           
        }
+    
   
 
     
