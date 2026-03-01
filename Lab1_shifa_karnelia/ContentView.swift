@@ -54,6 +54,14 @@ struct ContentView: View {
                         .frame(height: 80)
                            }
                        }
+        //just for demo check of record attempt
+        HStack(spacing: 16) {
+                            Text("Correct: \(totalCorrect)")
+                            Text("Wrong: \(totalWrong)")
+                        }
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 10)
     }
     //function that
     //check if number is prime or not
