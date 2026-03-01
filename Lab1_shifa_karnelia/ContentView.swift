@@ -34,44 +34,58 @@ struct ContentView: View {
         case wrong
     }
     var body: some View {
-        
-        //print number
-        Text(" \(currentNumber)")
-            .font(.system(size: 64, weight: .semibold, design: .serif))
-            .foregroundColor(.teal)
-        
-        //prime , not prime label
-        VStack(spacing: 18) {
-            tappableChoice(title: "Prime", userChoicePrime: true)
-            tappableChoice(title: "not Prime", userChoicePrime: false)
+        ZStack {
+            Color.white.ignoresSafeArea()
+            
+            VStack(spacing: 26) {
+              //print number
+                Text(" \(currentNumber)")
+                    .font(.system(size: 64, weight: .semibold, design: .serif))
+                    .foregroundColor(.teal)
+                
+                //prime , not prime label
+                VStack(spacing: 18) {
+                    tappableChoice(title: "Prime", userChoicePrime: true)
+                    tappableChoice(title: "not Prime", userChoicePrime: false)
+                }
+                
+                Group {
+                    switch feedback {
+                    case .none:
+                        EmptyView()
+                            .frame(height: 80)
+                    case .correct:
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 72))
+                            .foregroundColor(.green)
+                            .frame(height: 80)
+                    case .wrong:
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 72))
+                            .foregroundColor(.red)
+                            .frame(height: 80)
+                    }
+                }
+                //just for demo check of record attempt
+                HStack(spacing: 16) {
+                    Text("Correct: \(totalCorrect)")
+                    Text("Wrong: \(totalWrong)")
+                }
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .padding(.bottom, 10)
+            }
+        }// Timer tick every 5 seconds
+        .onReceive(timer) { _ in
+            // If user did NOT answer within 5 seconds -> record wrong
+            if !userAnsweredThisRound {
+                recordAttempt(wasCorrect: false)
+                feedback = .wrong
+            }
+            startNewRound()
         }
-        
-        Group {
-            switch feedback {
-                case .none:
-                    EmptyView()
-                      .frame(height: 80)
-                case .correct:
-                    Image(systemName: "checkmark.circle.fill")
-                       .font(.system(size: 72))
-                        .foregroundColor(.green)
-                        .frame(height: 80)
-                case .wrong:
-                    Image(systemName: "xmark.circle.fill")
-                        .font(.system(size: 72))
-                        .foregroundColor(.red)
-                        .frame(height: 80)
-                           }
-                       }
-        //just for demo check of record attempt
-        HStack(spacing: 16) {
-                            Text("Correct: \(totalCorrect)")
-                            Text("Wrong: \(totalWrong)")
-                        }
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding(.bottom, 10)
     }
+    
     //start new round
     
     private func startNewRound() {
