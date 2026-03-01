@@ -25,6 +25,7 @@ struct ContentView: View {
     @State private var showSummaryAlert: Bool = false
 
 
+    private let timer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
     
     enum Feedback {
         case none
