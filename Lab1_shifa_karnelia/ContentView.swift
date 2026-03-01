@@ -38,7 +38,7 @@ struct ContentView: View {
             Color.white.ignoresSafeArea()
             
             VStack(spacing: 26) {
-              //print number
+                //print number
                 Text(" \(currentNumber)")
                     .font(.system(size: 64, weight: .semibold, design: .serif))
                     .foregroundColor(.teal)
@@ -66,14 +66,6 @@ struct ContentView: View {
                             .frame(height: 80)
                     }
                 }
-                //just for demo check of record attempt
-                HStack(spacing: 16) {
-                    Text("Correct: \(totalCorrect)")
-                    Text("Wrong: \(totalWrong)")
-                }
-                .font(.footnote)
-                .foregroundColor(.gray)
-                .padding(.bottom, 10)
             }
         }// Timer tick every 5 seconds
         .onReceive(timer) { _ in
@@ -88,9 +80,6 @@ struct ContentView: View {
                    Button("OK") { }
                } message: {
                    Text("""
-                        Correct: \(batchCorrect)
-                        Wrong: \(batchWrong)
-
                         Total Correct: \(totalCorrect)
                         Total Wrong: \(totalWrong)
                         """)
