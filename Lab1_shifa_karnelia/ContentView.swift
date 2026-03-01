@@ -17,6 +17,13 @@ struct ContentView: View {
     // total score count var
     @State private var totalCorrect: Int = 0
     @State private var totalWrong: Int = 0
+    
+    //batch score var
+    @State private var batchAttempts: Int = 0
+    @State private var batchCorrect: Int = 0
+    @State private var batchWrong: Int = 0
+    @State private var showSummaryAlert: Bool = false
+
 
     
     enum Feedback {
