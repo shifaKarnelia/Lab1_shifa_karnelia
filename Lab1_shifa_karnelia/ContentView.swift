@@ -72,6 +72,7 @@ struct ContentView: View {
         }
         return true
     }
+    
     private func tappableChoice(title: String, userChoicePrime: Bool) -> some View {
         Text(title)
             .font(.system(size: 34, weight: .regular, design: .serif))
@@ -84,7 +85,18 @@ struct ContentView: View {
                 let userIsCorrect = (userChoicePrime == actualPrime)
                 userAnsweredThisRound = true
                 feedback = userIsCorrect ? .correct : .wrong
+                recordAttempt(wasCorrect: userIsCorrect)
             }
+    }
+    //record attempt
+    private func recordAttempt(wasCorrect: Bool) {
+       
+        if wasCorrect {
+            totalCorrect += 1
+           
+        } else {
+            totalWrong += 1
+                    }
     }
     
     
