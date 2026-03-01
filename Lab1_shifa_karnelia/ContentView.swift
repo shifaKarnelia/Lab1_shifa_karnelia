@@ -105,14 +105,19 @@ struct ContentView: View {
     }
     //record attempt
     private func recordAttempt(wasCorrect: Bool) {
+        batchAttempts += 1
        
         if wasCorrect {
             totalCorrect += 1
-           
-        } else {
+            batchCorrect += 1
+            }
+        else{
             totalWrong += 1
-                    }
-    }
+            batchWrong += 1
+            }
+       }
+  
+
     
     
 }
