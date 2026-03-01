@@ -25,25 +25,12 @@ struct ContentView: View {
             .font(.system(size: 64, weight: .semibold, design: .serif))
             .foregroundColor(.teal)
 
-        //prime , not prime labe
+        //prime , not prime label
         VStack(spacing: 18) {
-                Text("Prime")
-                .font(.system(size: 34))
-                .padding()
-                .contentShape(Rectangle())
-                .onTapGesture {print("prime tapped")
-                }
-                    
-                Text("Not Prime")
-                .font(.system(size: 34))
-                .padding()
-                .contentShape(Rectangle())
-                .onTapGesture {print("not prime tapped")
-                }
-                  
-
-              
+        tappableChoice(title: "Prime", userChoicePrime: true)
+        tappableChoice(title: "not Prime", userChoicePrime: false)
                        }
+       
 
         EmptyView().frame(height: 80)
         Image(systemName: "checkmark.circle.fill")
@@ -72,6 +59,16 @@ struct ContentView: View {
                 i += 2
             }
             return true
+    }
+    private func tappableChoice(title: String, userChoicePrime: Bool) -> some View {
+        Text(title)
+                    .font(.system(size: 34, weight: .regular, design: .serif))
+                    .foregroundColor(.teal)
+                    .padding(.vertical, 6)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        print("  \(title) tapped")
+                    }
     }
 }
 
