@@ -72,6 +72,16 @@ struct ContentView: View {
                         .foregroundColor(.gray)
                         .padding(.bottom, 10)
     }
+    //start new round
+    
+    private func startNewRound() {
+           // New number every 5 seconds
+           currentNumber = Int.random(in: 2...100)
+
+           userAnsweredThisRound = false
+           feedback = .none
+       }
+
     //function that
     //check if number is prime or not
     private func isPrime(_ n: Int) -> Bool {
